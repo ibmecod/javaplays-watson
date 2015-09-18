@@ -20,7 +20,7 @@ import java.io.UnsupportedEncodingException;
 import com.ibm.watson.developer_cloud.machine_translation.v1.MachineTranslation;
 import com.ibm.watson.developer_cloud.machine_translation.v1.model.Language;
 
-public class MachineTranslationTest extends WatsonServiceTest {
+public class MachineTranslationTest {
 
 	public static void mainold(String[] args) throws UnsupportedEncodingException {
 		MachineTranslation mt = new MachineTranslation();

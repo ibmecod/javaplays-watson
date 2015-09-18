@@ -30,7 +30,7 @@ import com.ibm.watson.developer_cloud.question_and_answer.v1.model.WatsonQuestio
 
 import java.util.List;
 
-public class QuestionAndAnswerTest extends WatsonServiceTest {
+public class QuestionAndAnswerTest {
 
 	public static void main(String[] args) throws UnsupportedEncodingException {
 		

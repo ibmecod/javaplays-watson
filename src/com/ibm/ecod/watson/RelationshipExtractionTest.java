@@ -21,7 +21,7 @@ import com.ibm.watson.developer_cloud.relationship_extraction.v1.RelationshipExt
 import com.ibm.watson.developer_cloud.relationship_extraction.v1.model.RelationshipExtractionDataset;
 
 
-public class RelationshipExtractionTest extends WatsonServiceTest {
+public class RelationshipExtractionTest {
 
 	public static void main(String[] args) throws UnsupportedEncodingException {
 		

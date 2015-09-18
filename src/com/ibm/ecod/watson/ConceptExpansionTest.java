@@ -25,7 +25,7 @@ import com.ibm.watson.developer_cloud.concept_expansion.v1.model.Job;
 import com.ibm.watson.developer_cloud.concept_expansion.v1.model.Job.Status;
 
 
-public class ConceptExpansionTest extends WatsonServiceTest {
+public class ConceptExpansionTest  {
 
 public static void main(String[] args) throws UnsupportedEncodingException {
 

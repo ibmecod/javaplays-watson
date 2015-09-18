@@ -21,7 +21,7 @@ import com.ibm.watson.developer_cloud.language_identification.v1.LanguageIdentif
 import com.ibm.watson.developer_cloud.language_identification.v1.model.IdentifiedLanguage;
 
 
-public class LanguageIdentificationTest extends WatsonServiceTest {
+public class LanguageIdentificationTest  {
 
 	public static void main(String[] args) throws UnsupportedEncodingException {
 		

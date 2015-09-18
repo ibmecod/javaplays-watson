@@ -27,7 +27,7 @@ import com.ibm.watson.developer_cloud.message_resonance.v1.model.Resonance;
 
 /**
  */
-public class MessageResonanceTest extends WatsonServiceTest {
+public class MessageResonanceTest {
 
 	/**
 	 * Method testResonance.

@@ -15,8 +15,11 @@
  */
 package com.ibm.ecod.watson;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
@@ -33,7 +36,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
 
-public class PersonalityInsightsTest extends WatsonServiceTest {
+public class PersonalityInsightsTest {
 
 	private String mobidick1cp;
 
@@ -86,4 +89,39 @@ public class PersonalityInsightsTest extends WatsonServiceTest {
 		System.out.println(profile);
 	}
 
+	/**
+	 * Gets the string from input stream.
+	 * 
+	 * @param is
+	 *            the is
+	 * 
+	 * @return the string from input stream
+	 */
+	protected static String getStringFromInputStream(InputStream is) {
+		BufferedReader br = null;
+		StringBuilder sb = new StringBuilder();
+
+		String line;
+		try {
+
+			br = new BufferedReader(new InputStreamReader(is));
+			while ((line = br.readLine()) != null) {
+				sb.append(line);
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (br != null) {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+
+		return sb.toString();
+
+	}
 }
