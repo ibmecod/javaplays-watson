@@ -32,8 +32,8 @@ public static void main(String[] args) throws UnsupportedEncodingException {
 	ConceptExpansion cet = new ConceptExpansion();	
 	try {
 		cet.setUsernameAndPassword(
-				"ca016c67-86cb-423c-9f77-e1fdfd335330",
-				"2vC2caUNHTa9"
+				"ac92b6e3-8f72-4f0b-8940-117e63cfc3f4",
+                "wcA4Tj1vMJmA"
 				);
 		cet.setEndPoint("https://gateway.watsonplatform.net/concept-expansion-beta/api");
 	} catch (Exception e1) {
@@ -63,7 +63,7 @@ public static void main(String[] args) throws UnsupportedEncodingException {
 		}
 		
 	} else {
-		System.out.println("The concept coudn't be expanded");
+		System.out.println("The concept couldn't be expanded");
 	}
 }
 }
