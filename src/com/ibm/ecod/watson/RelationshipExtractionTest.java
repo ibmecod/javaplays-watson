@@ -28,8 +28,8 @@ public class RelationshipExtractionTest {
 		RelationshipExtraction ret = new RelationshipExtraction();
 		try {
 			ret.setUsernameAndPassword(
-					"ca016c67-86cb-423c-9f77-e1fdfd335330",
-					"2vC2caUNHTa9"
+					"2cad97ed-b17a-4355-91ae-45af9db77cf0",
+                    "hK62qpXVvZtL"
 					);
 			ret.setEndPoint("https://gateway.watsonplatform.net/relationship-extraction-beta/api");
 		} catch (Exception e1) {

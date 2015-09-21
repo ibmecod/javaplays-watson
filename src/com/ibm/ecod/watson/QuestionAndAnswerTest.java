@@ -37,8 +37,8 @@ public class QuestionAndAnswerTest {
 		QuestionAndAnswer qat = new QuestionAndAnswer();
 		try {
 			qat.setUsernameAndPassword(
-					"ca016c67-86cb-423c-9f77-e1fdfd335330",
-					"2vC2caUNHTa9"
+					"27cfb41f-345e-42c9-a91e-e84400b3b1cd",
+                    "gOUT5N8ZQbcj"
 					);
 			qat.setEndPoint("https://gateway.watsonplatform.net/question-and-answer-beta/api");
 		} catch (Exception e1) {

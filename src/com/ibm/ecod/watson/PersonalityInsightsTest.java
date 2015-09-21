@@ -49,10 +49,10 @@ public class PersonalityInsightsTest {
 		
 		try {
 			pit.setUsernameAndPassword(
-					"ca016c67-86cb-423c-9f77-e1fdfd335330",
-					"2vC2caUNHTa9"
+					"f00edd0d-4759-4786-8713-b16b8e3a753f",
+                    "kn3fTe77CZUW"
 					);
-			pit.setEndPoint("https://gateway.watsonplatform.net/user-modeling-beta/api");
+			pit.setEndPoint("https://gateway.watsonplatform.net/personality-insights/api");
 
 			String str = "Call me Ishmael. Some years ago-never mind how long precisely-having little or no money in my purse, and nothing particular to interest me on shore,";
 			str += "I thought I would sail about a little and see the watery part of the world. It is a way I have of driving off the spleen and regulating the";

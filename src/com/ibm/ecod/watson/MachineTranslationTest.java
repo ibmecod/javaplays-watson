@@ -26,10 +26,10 @@ public class MachineTranslationTest {
 		MachineTranslation mt = new MachineTranslation();
 		try {
 			mt.setUsernameAndPassword(
-					"ca016c67-86cb-423c-9f77-e1fdfd335330",
-					"2vC2caUNHTa9"
+					"43d9762b-f0cb-46a5-80ef-aea6bcaf1b50",
+                    "4vlwyOuaOZoE"
 					);
-			mt.setEndPoint("https://gateway.watsonplatform.net/language-identification-beta/api");
+			mt.setEndPoint("https://gateway.watsonplatform.net/language-translation/api");
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
