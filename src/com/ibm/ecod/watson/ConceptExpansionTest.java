@@ -32,8 +32,8 @@ public static void main(String[] args) throws UnsupportedEncodingException {
 	ConceptExpansion cet = new ConceptExpansion();	
 	try {
 		cet.setUsernameAndPassword(
-				"ac92b6e3-8f72-4f0b-8940-117e63cfc3f4",
-                "wcA4Tj1vMJmA"
+				"ac92b6e3-8f72-4f0b-8940-117e63cfc3f4",//Bluemix Watson Concept Expansion service account username from env variables
+                "wcA4Tj1vMJmA"//Bluemix Watson Concept Expansion service account password from env variables
 				);
 		cet.setEndPoint("https://gateway.watsonplatform.net/concept-expansion-beta/api");
 	} catch (Exception e1) {

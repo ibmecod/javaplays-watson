@@ -26,8 +26,8 @@ public class LanguageTranslationTest {
 
 	public static void main(String[] args) throws URISyntaxException, FileNotFoundException {
 		LanguageTranslation service = new LanguageTranslation();
-		service.setEndPoint("https://gateway.watsonplatform.net/language-translation/api");
-		service.setUsernameAndPassword("93eee768-c0fc-4789-8ccf-6ef9b77f0942", "WFrWJcAK2ql4");
+		service.setEndPoint("https://gateway.watsonplatform.net/language-translation/api");//Bluemix Watson Language Translation service account username from env variables
+		service.setUsernameAndPassword("93eee768-c0fc-4789-8ccf-6ef9b77f0942", "WFrWJcAK2ql4");//Bluemix Watson Language Translation service account password from env variables
 
 		TranslationResult translationResult = service.translate("Welcome to IBM Bluemix Watson Language Translation Service Snippet created by EcoDCNC team", "en", "es");
 
