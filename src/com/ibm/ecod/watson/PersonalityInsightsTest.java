@@ -49,8 +49,8 @@ public class PersonalityInsightsTest {
 		
 		try {
 			pit.setUsernameAndPassword(
-					"f00edd0d-4759-4786-8713-b16b8e3a753f",
-                    "kn3fTe77CZUW"
+					"f00edd0d-4759-4786-8713-b16b8e3a753f",//Bluemix Watson Personality insights service account username from env variables
+                    "kn3fTe77CZUW"//Bluemix Watson Personality insights service account password from env variables
 					);
 			pit.setEndPoint("https://gateway.watsonplatform.net/personality-insights/api");
 

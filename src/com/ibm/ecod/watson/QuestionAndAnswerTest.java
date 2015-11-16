@@ -37,8 +37,8 @@ public class QuestionAndAnswerTest {
 		QuestionAndAnswer qat = new QuestionAndAnswer();
 		try {
 			qat.setUsernameAndPassword(
-					"27cfb41f-345e-42c9-a91e-e84400b3b1cd",
-                    "gOUT5N8ZQbcj"
+					"45b7fc9a-da1f-4059-abd7-5e4c3ffc6282",//Bluemix Watson Q and A service account username from env variables
+                    "jL0W2DuUOJEM"//Bluemix Watson Q and A service account password from env variables
 					);
 			qat.setEndPoint("https://gateway.watsonplatform.net/question-and-answer-beta/api");
 		} catch (Exception e1) {

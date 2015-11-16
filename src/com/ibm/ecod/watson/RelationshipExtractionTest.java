@@ -28,8 +28,8 @@ public class RelationshipExtractionTest {
 		RelationshipExtraction ret = new RelationshipExtraction();
 		try {
 			ret.setUsernameAndPassword(
-					"2cad97ed-b17a-4355-91ae-45af9db77cf0",
-                    "hK62qpXVvZtL"
+					"2cad97ed-b17a-4355-91ae-45af9db77cf0",//Bluemix Watson Relationship extraction service account username from env variables
+                    "hK62qpXVvZtL"//Bluemix Watson Relationship extraction service account password from env variables
 					);
 			ret.setEndPoint("https://gateway.watsonplatform.net/relationship-extraction-beta/api");
 		} catch (Exception e1) {
