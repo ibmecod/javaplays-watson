@@ -16,9 +16,9 @@ public class DialogTest
 		DialogService service = new DialogService();
 		service.setUsernameAndPassword
 		(
-				// Bluemix Watson Dialog service account username from env variables
+				// Bluemix Watson Dialog service account username from VCAP_SERVICES env variable
 				"04827ce9-2397-4ee1-aef2-b48ddb1002bc",
-				// Bluemix Watson Dialog service account password from env variables
+				// Bluemix Watson Dialog service account password from VCAP_SERVICES env variable
 				"sYD19zNJy29x"
 		);
 		service.setEndPoint("https://gateway.watsonplatform.net/dialog/api");
