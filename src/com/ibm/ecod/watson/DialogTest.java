@@ -8,6 +8,14 @@ import com.ibm.watson.developer_cloud.dialog.v1.DialogService;
 import com.ibm.watson.developer_cloud.dialog.v1.model.Conversation;
 import com.ibm.watson.developer_cloud.dialog.v1.model.Dialog;
 
+/**
+ * Tests Bluemix Watson Dialog service.
+ * Create folder "input" in your working directory.
+ * Copy "input/DialogTest.xml" file to "input" folder.
+ * 
+ * @author tnevoli
+ *
+ */
 public class DialogTest
 {
 	public static void main(String[] args)
@@ -26,7 +34,7 @@ public class DialogTest
 		// Note Dialog name must be unique for each user ! Use your initials and
 		// last 4 digits of your phone number
 		// to make sure
-		Dialog dialog = service.createDialog("dialog-name-goes-here", new File("input/Exercise_2_end.xml"));
+		Dialog dialog = service.createDialog("dialog-name-goes-here", new File("input/DialogTest.xml"));
 
 		// Create conversation
 		Map<String, Object> params = new HashMap<String, Object>();
