@@ -14,6 +14,7 @@ import com.ibm.watson.developer_cloud.dialog.v1.model.Dialog;
  * Copy "input/DialogTest.xml" file to "input" folder.
  * 
  * Correction to exercise instruction.
+ * REMOVE OLD WRAPPER LIBRARY FROM THE PROJECT
  * Use this version of Watson Java wrapper library.
  * java-wrapper-1.1.1-jar-with-dependencies.jar
  * 
