@@ -12,6 +12,10 @@ import com.ibm.watson.developer_cloud.natural_language_classifier.v1.model.Class
  * Create folder "input" in your working directory.
  * Copy "input/NaturalLanguageClassifierTest.csv" file to "input" folder.
  * 
+ * Correction to exercise instruction.
+ * Use this version of Watson Java wrapper library.
+ * java-wrapper-1.1.1-jar-with-dependencies.jar
+ * 
  * @author tnevoli
  *
  */

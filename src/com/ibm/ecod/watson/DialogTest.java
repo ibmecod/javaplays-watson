@@ -13,6 +13,10 @@ import com.ibm.watson.developer_cloud.dialog.v1.model.Dialog;
  * Create folder "input" in your working directory.
  * Copy "input/DialogTest.xml" file to "input" folder.
  * 
+ * Correction to exercise instruction.
+ * Use this version of Watson Java wrapper library.
+ * java-wrapper-1.1.1-jar-with-dependencies.jar
+ * 
  * @author tnevoli
  *
  */
