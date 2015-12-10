@@ -40,6 +40,7 @@ public class DialogTest
 	{
 
 		DialogService service = new DialogService();
+		service.setEndPoint("https://gateway.watsonplatform.net/dialog/api");
 		service.setUsernameAndPassword
 		(
 				// account username from VCAP_SERVICES env variable of the Dialog service instance
@@ -47,12 +48,11 @@ public class DialogTest
 				// account password from VCAP_SERVICES env variable of the Dialog service instance
 				"sYD19zNJy29x"
 		);
-		service.setEndPoint("https://gateway.watsonplatform.net/dialog/api");
 
 		// Note Dialog name must be unique for each user ! Use your initials and
 		// last 4 digits of your phone number
 		// to make sure
-		Dialog dialog = service.createDialog("dialog-name-goes-here", new File("input/DialogTest.xml"));
+		Dialog dialog = service.createDialog("dialog-1", new File("input/DialogTest.xml"));
 
 		// Create conversation
 		Map<String, Object> params = new HashMap<String, Object>();
