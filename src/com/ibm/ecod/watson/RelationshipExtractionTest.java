@@ -18,27 +18,31 @@ package com.ibm.ecod.watson;
 import java.io.UnsupportedEncodingException;
 
 import com.ibm.watson.developer_cloud.relationship_extraction.v1.RelationshipExtraction;
-import com.ibm.watson.developer_cloud.relationship_extraction.v1.model.RelationshipExtractionDataset;
+import com.ibm.watson.developer_cloud.relationship_extraction.v1.model.Dataset;
 
+public class RelationshipExtractionTest
+{
 
-public class RelationshipExtractionTest {
+	public static void main(String[] args) throws UnsupportedEncodingException
+	{
 
-	public static void main(String[] args) throws UnsupportedEncodingException {
-		
 		RelationshipExtraction ret = new RelationshipExtraction();
-		try {
-			ret.setUsernameAndPassword(
-					"2cad97ed-b17a-4355-91ae-45af9db77cf0",//Bluemix Watson Relationship extraction service account username from env variables
-                    "hK62qpXVvZtL"//Bluemix Watson Relationship extraction service account password from env variables
-					);
-			ret.setEndPoint("https://gateway.watsonplatform.net/relationship-extraction-beta/api");
-		} catch (Exception e1) {
-			e1.printStackTrace();
-		}
-		ret.setDataset(RelationshipExtractionDataset.ENGLISH_NEWS);
+		ret.setEndPoint
+		(
+				"https://gateway.watsonplatform.net/relationship-extraction-beta/api"
+		);
+		ret.setUsernameAndPassword
+		(
+				// Bluemix Watson Content Insights service account username from env variables
+				"48c50795-9eea-4254-b5d6-889f4b7d8dda",
+				// Bluemix Watson Content Insights service account password from env variables
+				"4ukZ0Ho6uUIf"
+		);
+
+		ret.setDataset(Dataset.ENGLISH_NEWS);
 		String response = ret.extract("John works in IBM. John kicked the ball.");
 		System.out.println(response);
+		
 	}
-
 
 }
