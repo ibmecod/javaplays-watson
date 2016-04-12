@@ -42,76 +42,39 @@
                     </grammar>
                     <output>
                         <prompt selectionType="RANDOM">
-                            <item>Are you looking for appetizers, entrees, or drinks?</item>
+                            <item>We sell appetizers, entrees and drinks</item>
                         </prompt>
-                        <input>
-                            <grammar>
-                                <item>drinks</item>
-                                <item>beverages</item>
-                                <item>liquid</item>
-                                <item>libation</item>
-                            </grammar>
-                            <output>
-                                <prompt selectionType="RANDOM">
-                                    <item>We have&lt;br/&gt;
-Coke,
-Sprite,
-Sunkist,
-Root Beer,
-Ginger Ale,
-Fresca,
-Mello Yello,
-Grape,
-Dr Pepper,
-Monster,
-Moxie Energy,
-and Bottled Spring water
-</item>
-                                </prompt>
-                            </output>
-                        </input>
-                        <input>
-                            <grammar>
-                                <item>entrees</item>
-                                <item>meals</item>
-                                <item>main course</item>
-                                <item>food</item>
-                            </grammar>
-                            <output>
-                                <prompt selectionType="RANDOM">
-                                    <item>We have Chicken Parm,
-Chicken Cutlet and Marinara Sauce,
-Veal Parm,
-Eggplant Parm,
-Eggplant and Marinara Sauce,
-Meatball, Marinara Sauce and Meatball,
-Chicken &amp; Broccoli,
-Chicken Kabob, Alfredo Sauce and Broccoli,
-Steak &amp; Broccoli, and
-Alfredo Sauce and Broccoli.
-</item>
-                                </prompt>
-                            </output>
-                        </input>
-                        <input>
-                            <grammar>
-                                <item>appetizers</item>
-                                <item>snacks</item>
-                                <item>finger food</item>
-                                <item>appertif</item>
-                            </grammar>
-                            <output>
-                                <prompt selectionType="RANDOM">
-                                    <item>Chose from Fried Calamari, Mozarella Sticks, Stuffed potato skins, Jalepeno Poppers or Stuffed Mushrooms</item>
-                                </prompt>
-                            </output>
-                        </input>
                     </output>
+                 </input>
+                 <input>
+                            <grammar>
+                                <item>What drinks do you have?</item>
+                                <item>$ What drinks do you have?</item>
+                        		<item>$ list of drinks</item>
+                        		<item>What * drinks * have</item>
+                        		<item>$ list drinks * available</item>
+                        		<item>$ what drinks do you have</item>
+                            </grammar>
+                            <output>
+                                <prompt selectionType="RANDOM">
+                                    <item>We have Coke,Sprite,Sunkist,Root Beer,Ginger Ale,Fresca,Mello Yello,Grape,Dr Pepper,Monster,Moxie Energy,and Bottled Spring water</item>
+                                </prompt>
+                            </output>
                 </input>
                 <input>
                     <grammar>
                         <item>What type of pizza do you sell?</item>
+                        <item>$ What type of pizza do you sell?</item>
+                        <item>$ type of pizza </item>
+                        <item>What * pizza * sell</item>
+                        <item>$ list pizza * available</item>
+                        <item>$ what pizza do you have</item>
                     </grammar>
+                    <output>
+                                <prompt selectionType="RANDOM">
+                                    <item>We sell Cheese, Pepporini and Margarita, Pizzas</item>
+                                </prompt>
+                            </output>
                 </input>
             </folder>
             <folder label="Storage"/>

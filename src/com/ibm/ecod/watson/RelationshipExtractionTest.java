@@ -34,9 +34,9 @@ public class RelationshipExtractionTest
 		ret.setUsernameAndPassword
 		(
 				// Bluemix Watson Content Insights service account username from env variables
-				"48c50795-9eea-4254-b5d6-889f4b7d8dda",
+				"e254e369-25cd-410b-87e8-7c9a47103683",
 				// Bluemix Watson Content Insights service account password from env variables
-				"4ukZ0Ho6uUIf"
+				"Q8osO9Tuw3MF"
 		);
 
 		ret.setDataset(Dataset.ENGLISH_NEWS);

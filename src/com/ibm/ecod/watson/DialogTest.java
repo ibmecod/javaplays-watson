@@ -22,6 +22,8 @@ import java.util.Map;
 import com.ibm.watson.developer_cloud.dialog.v1.DialogService;
 import com.ibm.watson.developer_cloud.dialog.v1.model.Conversation;
 import com.ibm.watson.developer_cloud.dialog.v1.model.Dialog;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.SpeechToText;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 
 /**
  * Tests Bluemix Watson Dialog service.
@@ -44,33 +46,79 @@ public class DialogTest
 		service.setUsernameAndPassword
 		(
 				// account username from VCAP_SERVICES env variable of the Dialog service instance
-				"04827ce9-2397-4ee1-aef2-b48ddb1002bc",
+				"144570fe-e5d5-4b98-b188-aa92cbafe14c",
 				// account password from VCAP_SERVICES env variable of the Dialog service instance
-				"sYD19zNJy29x"
+				"mEBqVd9MRAkH"
 		);
 
 		// Note Dialog name must be unique for each user ! Use your initials and
 		// last 4 digits of your phone number
 		// to make sure
-		Dialog dialog = service.createDialog("dialog-1", new File("input/DialogTest.xml"));
+		Dialog dialog = service.createDialog("dialog-sk4251", new File("input/DialogTest.xml"));
 
 		// Create conversation
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put(DialogService.DIALOG_ID, dialog.getId());
 
 		Conversation conversation = service.converse(params);
-		System.out.println("Mike's Pizza: " + conversation.getResponse().get(0));
-
+		System.out.println("Viacom: " + conversation.getResponse().get(0));
+		
 		// Ask question
-		System.out.println("me : " + "Hi, what type of toppings do you have?");
-		params.put(DialogService.CLIENT_ID, conversation.getClientId());
-		params.put(DialogService.INPUT, "What type of toppings do you have?");
-		params.put(DialogService.CONVERSATION_ID, conversation.getId());
-		conversation = service.converse(params);
+		
+		/**
+		 * Recognize a sample wav file and print the transcript into the console output. Make sure you are
+		 * using UTF-8 to print messages; otherwise, you will see question marks.
+		 */
+		
+		    SpeechToText service2 = new SpeechToText();
+		    service2.setUsernameAndPassword("<username>", "<password>");
+
+		    File audio = new File("input/Q1.wav");
+		    SpeechResults transcript = service2.recognize(audio, null);
+
+		    System.out.println(transcript);
+		  
+		
+				System.out.println("me : " + "Hi, what do you sell?");
+				params.put(DialogService.CLIENT_ID, conversation.getClientId());
+				params.put(DialogService.INPUT, "What do you sell?");
+				params.put(DialogService.CONVERSATION_ID, conversation.getId());
+				conversation = service.converse(params);
 
 		// Get reply
-		System.out.println("Mike's Pizza: " + conversation.getResponse().get(0));
+				System.out.println("Caterers at Viacom: " + conversation.getResponse().get(0));
+		
+				// Ask question
+				System.out.println("me : " + "What drinks do you have?");
+				params.put(DialogService.CLIENT_ID, conversation.getClientId());
+				params.put(DialogService.INPUT, "What drinks do you have?");
+				params.put(DialogService.CONVERSATION_ID, conversation.getId());
+				conversation = service.converse(params);
 
+		// Get reply
+				System.out.println("Caterers at Viacom: " + conversation.getResponse().get(0));		
+				
+		// Ask question
+				System.out.println("me : " + "What type of pizza do you sell?");
+				params.put(DialogService.CLIENT_ID, conversation.getClientId());
+				params.put(DialogService.INPUT, "What type of pizza do you sell?");
+				params.put(DialogService.CONVERSATION_ID, conversation.getId());
+				conversation = service.converse(params);
+
+		// Get reply
+				System.out.println("Caterers at Viacom: " + conversation.getResponse().get(0));
+
+		// Ask question
+				System.out.println("me : " + "Hi, what type of toppings do you have?");
+				params.put(DialogService.CLIENT_ID, conversation.getClientId());
+				params.put(DialogService.INPUT, "What type of toppings do you have?");
+				params.put(DialogService.CONVERSATION_ID, conversation.getId());
+				conversation = service.converse(params);
+
+		// Get reply
+				System.out.println("Caterers at Viacom: " + conversation.getResponse().get(0));
+		
+		
 		if (dialog != null)
 		{
 			service.deleteDialog(dialog.getId());

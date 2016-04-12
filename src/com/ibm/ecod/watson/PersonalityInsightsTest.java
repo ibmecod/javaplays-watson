@@ -37,9 +37,9 @@ public class PersonalityInsightsTest {
 		pit.setUsernameAndPassword
 		(
 				// Bluemix Watson Personality Insights service account username from env variables
-				"815dfc3b-089d-4c2c-b8bb-30f84bb9543d",
+				"1f03fa07-f19b-4e91-b7a7-e14cdd7d6220",
 				// Bluemix Watson Personality Insights service account password from env variables
-				"jMyGK0hmUQ5U"
+				"kuRCFH31XtqB"
 		);
 
 		String str = "Call me Ishmael. Some years ago-never mind how long precisely-having little or no money in my purse, and nothing particular to interest me on shore,";
