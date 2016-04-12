@@ -44,9 +44,9 @@ public class NaturalLanguageClassifierTest
 		service.setUsernameAndPassword
 		(
 				// account username from VCAP_SERVICES env variable of the Watson Natural Language Classifier service instance
-				"f7b9f0c5-2d1d-4fde-aab0-7a9786b3b9c0",
+				"3bfd3aca-d07f-47b8-8e31-455c62fa1bed",
 				// account password from VCAP_SERVICES env variable of the Watson Natural Language Classifier service instance
-				"orj6Gg7EW5WF"
+				"r9h8X4e1ysNl"
 		);
 		service.setEndPoint("https://gateway.watsonplatform.net/natural-language-classifier/api");
 
@@ -54,7 +54,7 @@ public class NaturalLanguageClassifierTest
 				service.createClassifier
 				(
 						// Note Classifier name must be unique for each user ! Use your initials and last 4 digits of your phone number to make sure
-						"classifier-name-goes-here",
+						"sk4251",
 						"en",
 						new File("input/NaturalLanguageClassifierTest.csv")
 				);
@@ -85,10 +85,14 @@ public class NaturalLanguageClassifierTest
 		{
 			System.out.println("Classifier successfully trained");
 
-			System.out.println("Querying classifier with \"Is is going to rain soon?\"");
-			Classification classification = service.classify(classifierId, "Is is going to rain soon?");
+			//System.out.println("Querying classifier with \"Is it going to rain soon?\"");
+			//Classification classification = service.classify(classifierId, "Is it going to rain soon?");
+			//System.out.println("Results:");
+			//System.out.println(classification);
+			System.out.println("Querying classifier with \"What will be the temperature today?\"");
+			Classification classification2 = service.classify(classifierId, "What will be the temperature today?");
 			System.out.println("Results:");
-			System.out.println(classification);
+			System.out.println(classification2);
 		}
 
 		if (classifier != null)

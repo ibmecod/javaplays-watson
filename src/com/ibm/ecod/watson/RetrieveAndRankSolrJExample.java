@@ -40,9 +40,9 @@ import com.ibm.watson.developer_cloud.retrieve_and_rank.v1.RetrieveAndRank;
  */
 public class RetrieveAndRankSolrJExample {
 
-  private static final String USERNAME = "<username>";
-  private static final String PASSWORD = "<password>";
-  private static final String SOLR_CLUSTER_ID = "<your-solr-cluster-id>";
+  private static final String USERNAME = "e87e8b37-cc56-4c63-a138-b518f06c8347";
+  private static final String PASSWORD = "dHMSbqVgy5Mr";
+  private static final String SOLR_CLUSTER_ID = "sk4251_solr";
 
   /**
    * The name of the collection to create, index data into, and search.

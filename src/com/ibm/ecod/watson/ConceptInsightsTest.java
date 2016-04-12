@@ -32,16 +32,16 @@ public class ConceptInsightsTest
 		service.setUsernameAndPassword
 		(
 				// Bluemix Watson Content Insights service account username from env variables
-				"6ec673c8-78d5-442b-b94d-b435aa363a49",
+				"a425694b-f06a-4956-886d-e2e9e66d7c65",
 				// Bluemix Watson Content Insights service account password from env variables
-				"zbT1Ab6ib97I"
+				"FPhRNXvLnJ9m"
 		);
 
 		final Annotations annotations =
 				service.annotateText
 				(
 						Graph.WIKIPEDIA,
-						"IBM Watson won the Jeopardy television show hosted by Alex Trebek"
+						"NY JUG session is on Cognitive Computing using Java"
 				);
 
 		System.out.println(annotations);
