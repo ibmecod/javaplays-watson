@@ -15,6 +15,7 @@ package com.ibm.ecod.watson;
 
 import java.io.File;
 
+import com.ibm.watson.developer_cloud.speech_to_text.v1.RecognizeOptions;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.SpeechToText;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 
@@ -26,12 +27,19 @@ import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 public class SpeechToTextExample {
 
   public static void main(String[] args) {
-    SpeechToText service = new SpeechToText();
-    service.setUsernameAndPassword("<username>", "<password>");
+	  SpeechToText service = new SpeechToText();
+	  service.setUsernameAndPassword("d2334b1a-4c18-41df-8dab-3659c0dbfb3d", "dRGqpp6tvCXD");
+	  service.setEndPoint("https://stream.watsonplatform.net/speech-to-text/api");
+	  RecognizeOptions options = new RecognizeOptions();
+	  options.contentType("audio/wav");
+	  options.continuous(true);
+	  options.interimResults(true);
 
     File audio = new File("input/Q2.wav");
-    SpeechResults transcript = service.recognize(audio);
+    SpeechResults transcript = service.recognize(audio, options);
 
     System.out.println(transcript);
+    
   }
+  
 }

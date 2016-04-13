@@ -13,6 +13,7 @@
 	<classpathentry kind="lib" path="lib/gson-2.6.2.jar"/>
 	<classpathentry kind="lib" path="lib/okhttp-2.7.5.jar"/>
 	<classpathentry kind="lib" path="lib/okio-1.7.0.jar"/>
-	<classpathentry kind="lib" path="lib/okio-parent-1.6.0.pom"/>
+	<classpathentry kind="lib" path="lib/commons-lang3-3.0.jar"/>
+	<classpathentry kind="lib" path="lib/nv-websocket-client-1.25.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
