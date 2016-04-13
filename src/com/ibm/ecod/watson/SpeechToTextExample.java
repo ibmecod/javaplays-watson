@@ -15,7 +15,6 @@ package com.ibm.ecod.watson;
 
 import java.io.File;
 
-import com.ibm.watson.developer_cloud.http.HttpMediaType;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.SpeechToText;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
 
@@ -31,7 +30,7 @@ public class SpeechToTextExample {
     service.setUsernameAndPassword("<username>", "<password>");
 
     File audio = new File("input/Q2.wav");
-    SpeechResults transcript = service.recognize(audio, HttpMediaType.AUDIO_WAV);
+    SpeechResults transcript = service.recognize(audio);
 
     System.out.println(transcript);
   }
