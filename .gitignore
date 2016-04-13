@@ -1,1 +1,12 @@
 /bin/
+
+*.iml
+
+.idea/
+
+.gradle/
+.classpath
+
+.project
+build/**/*
+gradle/**/*
