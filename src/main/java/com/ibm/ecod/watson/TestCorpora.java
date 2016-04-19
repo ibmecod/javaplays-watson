@@ -1,5 +1,6 @@
 package com.ibm.ecod.watson;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.util.HashMap;
@@ -14,6 +15,10 @@ import com.ibm.watson.developer_cloud.concept_insights.v2.model.Document;
 import com.ibm.watson.developer_cloud.concept_insights.v2.model.Documents;
 import com.ibm.watson.developer_cloud.concept_insights.v2.model.Part;
 import com.ibm.watson.developer_cloud.http.HttpMediaType;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.RecognizeOptions;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.SpeechToText;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
+import com.ibm.watson.developer_cloud.speech_to_text.v1.model.Transcript;
 
 public class TestCorpora {
 
@@ -32,6 +37,8 @@ public class TestCorpora {
 		    
 		    Corpus corpus = new Corpus(account, name);
 		    corpus.addAccountPermissions(new AccountPermission(account, Permission.READ_WRITE_ADMIN));
+		    
+		    service.deleteCorpus(corpus);
 
 		    try
 		    {
@@ -48,9 +55,26 @@ public class TestCorpora {
 		    
 		    corpus = service.getCorpus(corpus);
 		    
-		    Document newDocument = new Document(corpus, "integration_doc");
+			SpeechToText speechToTextService = new SpeechToText();
+		    speechToTextService.setUsernameAndPassword("d2334b1a-4c18-41df-8dab-3659c0dbfb3d", "dRGqpp6tvCXD");
+		    speechToTextService.setEndPoint("https://stream.watsonplatform.net/speech-to-text/api");
+		    RecognizeOptions options = new RecognizeOptions();
+		    options.contentType("audio/ogg");
+		    options.continuous(true);
+		    options.interimResults(true);
+
+		    SpeechResults speechResults = speechToTextService.recognize(new File("input/writing_groovy_ATS.ogg"), options);
+
+		    
+		    Document newDocument = new Document(corpus, "writing_groovy_ATS");
 		    newDocument.setLabel("test document");
-		    newDocument.addParts(new Part("part1", "this is the first part", HttpMediaType.TEXT_PLAIN));
+		    
+		    for (Transcript transcript : speechResults.getResults())
+		    {
+			    newDocument.addParts(new Part("part1", transcript.getAlternatives().get(0).getTranscript(), HttpMediaType.TEXT_PLAIN));
+		    	
+		    }
+		    
 		    try {
 		      service.createDocument(newDocument);
 		      newDocument = service.getDocument(newDocument);
