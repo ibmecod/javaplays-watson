@@ -3,6 +3,7 @@ package com.ibm.ecod.watson;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +14,9 @@ import com.ibm.watson.developer_cloud.concept_insights.v2.model.Corpus;
 import com.ibm.watson.developer_cloud.concept_insights.v2.model.Corpus.Access;
 import com.ibm.watson.developer_cloud.concept_insights.v2.model.Document;
 import com.ibm.watson.developer_cloud.concept_insights.v2.model.Documents;
+import com.ibm.watson.developer_cloud.concept_insights.v2.model.Matches;
 import com.ibm.watson.developer_cloud.concept_insights.v2.model.Part;
+import com.ibm.watson.developer_cloud.concept_insights.v2.model.QueryConcepts;
 import com.ibm.watson.developer_cloud.http.HttpMediaType;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.RecognizeOptions;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.SpeechToText;
@@ -38,6 +41,7 @@ public class TestCorpora {
 		    Corpus corpus = new Corpus(account, name);
 		    corpus.addAccountPermissions(new AccountPermission(account, Permission.READ_WRITE_ADMIN));
 		    
+/*
 		    service.deleteCorpus(corpus);
 
 		    try
@@ -109,6 +113,7 @@ public class TestCorpora {
 //		      service.deleteDocument(newDocument);
 		    }
 		    
+*/
 		    final Map<String, Object> params = new HashMap<String, Object>();
 		    params.put(ConceptInsights.CURSOR, 0);
 		    params.put(ConceptInsights.LIMIT, 20);
@@ -116,6 +121,13 @@ public class TestCorpora {
 		    final Documents documents = service.listDocuments(corpus, params);
 		    
 		    System.out.println(documents);
+		    
+		    Map<String, Object> parameters = new HashMap<String, Object>();
+		    parameters.put("ids", Arrays.asList(new String[]{"/corpora/eve6tionsto1/devoxx_corpus1/documents/writing_groovy_ATS", "/corpora/eve6tionsto1/devoxx_corpus1/documents/InterviewWithPepperRobot", }));
+		    
+		    QueryConcepts queryConcepts = service.conceptualSearch(corpus, parameters);
+		    
+		    System.out.println(queryConcepts.toString());
 		    
 		  }
 
