@@ -69,9 +69,34 @@ public class TestCorpora {
 		    Document newDocument = new Document(corpus, "writing_groovy_ATS");
 		    newDocument.setLabel("test document");
 		    
-		    for (Transcript transcript : speechResults.getResults())
+		    for (int i = 0; i < speechResults.getResults().size(); i++)
 		    {
-			    newDocument.addParts(new Part("part1", transcript.getAlternatives().get(0).getTranscript(), HttpMediaType.TEXT_PLAIN));
+			    Transcript transcript = speechResults.getResults().get(i);
+			    	
+			    newDocument.addParts(new Part("part_" + i, transcript.getAlternatives().get(0).getTranscript(), HttpMediaType.TEXT_PLAIN));
+		    	
+		    }
+		    
+		    try {
+		      service.createDocument(newDocument);
+		      newDocument = service.getDocument(newDocument);
+		      newDocument.setTimeToLive(3600);
+		      service.updateDocument(newDocument);
+		    } finally {
+//		      service.deleteDocument(newDocument);
+		    }
+		    
+		    speechResults = speechToTextService.recognize(new File("input/InterviewWithPepperRobot.ogg"), options);
+
+		    
+		    newDocument = new Document(corpus, "InterviewWithPepperRobot");
+		    newDocument.setLabel("test document 2");
+		    
+		    for (int i = 0; i < speechResults.getResults().size(); i++)
+		    {
+			    Transcript transcript = speechResults.getResults().get(i);
+			    	
+			    newDocument.addParts(new Part("part_" + i, transcript.getAlternatives().get(0).getTranscript(), HttpMediaType.TEXT_PLAIN));
 		    	
 		    }
 		    
