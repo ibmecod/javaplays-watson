@@ -117,70 +117,71 @@ public class TestCorpora {
 ////		      service.deleteDocument(newDocument);
 //		    }
 
-//		    for (int chunkIndex = 0; chunkIndex <= 1; chunkIndex++)
-//		    {
-//		    	String chunkFilePath = String.format("input/GetHip/chunks/audio%02d.ogg", chunkIndex);
-//		    	System.out.println(chunkFilePath);
-//		    	
-//			    speechResults = speechToTextService.recognize(new File(chunkFilePath), options);
-//
-//			    newDocument = new Document(corpus, "GetHip");
-//			    newDocument.setLabel(String.format("GetHip%02d", chunkIndex));
-//
-//			    Map<String, String> userFields = new HashMap<String, String>();
-//			    userFields.put("link", "http://test.link.com");
-//			    newDocument.setUserFields(userFields);
-//			    
-//			    for (int i = 0; i < speechResults.getResults().size(); i++)
-//			    {
-//				    Transcript transcript = speechResults.getResults().get(i);
-//				    	
-//				    newDocument.addParts(new Part("part_" + i, transcript.getAlternatives().get(0).getTranscript(), HttpMediaType.TEXT_PLAIN));
-//			    	
-//			    }
-//			    
-//			    try {
-//			      service.createDocument(newDocument);
-//			      newDocument = service.getDocument(newDocument);
-//			      newDocument.setTimeToLive(3600);
-//			      service.updateDocument(newDocument);
-//			    } finally {
-////			      service.deleteDocument(newDocument);
-//			    }
-//		    	
-//		    }
-//		    
-	    	String smallFilePath = "input/GetHip/chunks/audio_small.ogg";
-	    	System.out.println(smallFilePath);
-	    	
-		    speechResults = speechToTextService.recognize(new File(smallFilePath), options);
-
-		    newDocument = new Document(corpus, "GetHip_small");
-		    newDocument.setLabel("GetHip_small");
-
-		    Map<String, String> userFields = new HashMap<String, String>();
-		    userFields.put("link", "http://test.link.com");
-		    newDocument.setUserFields(userFields);
-		    
-		    for (int i = 0; i < speechResults.getResults().size(); i++)
+		    for (int chunkIndex = 0; chunkIndex <= 10; chunkIndex++)
 		    {
-			    Transcript transcript = speechResults.getResults().get(i);
+		    	String chunkFilePath = String.format("input/audio_chunks/out%03d.ogg", chunkIndex);
+		    	System.out.println(chunkFilePath);
+		    	
+			    speechResults = speechToTextService.recognize(new File(chunkFilePath), options);
+
+			    newDocument = new Document(corpus, String.format("InterviewWithPepperRobot%03d", chunkIndex));
+			    newDocument.setLabel(String.format("InterviewWithPepperRobot%03d", chunkIndex));
+
+			    Map<String, String> userFields = new HashMap<String, String>();
+			    userFields.put("link", "http://test.link.com");
+			    newDocument.setUserFields(userFields);
+			    
+			    for (int i = 0; i < speechResults.getResults().size(); i++)
+			    {
+				    Transcript transcript = speechResults.getResults().get(i);
+				    	
+				    newDocument.addParts(new Part("part_" + i, transcript.getAlternatives().get(0).getTranscript(), HttpMediaType.TEXT_PLAIN));
 			    	
-			    newDocument.addParts(new Part("part_" + i, transcript.getAlternatives().get(0).getTranscript(), HttpMediaType.TEXT_PLAIN));
+			    }
+			    
+			    try {
+			      service.createDocument(newDocument);
+			      newDocument = service.getDocument(newDocument);
+			      newDocument.setTimeToLive(3600);
+			      service.updateDocument(newDocument);
+			    } finally {
+//			      service.deleteDocument(newDocument);
+			    }
 		    	
 		    }
 		    
-		    try {
-		      service.createDocument(newDocument);
-		      newDocument = service.getDocument(newDocument);
-		      newDocument.setTimeToLive(3600);
-		      service.updateDocument(newDocument);
-		    } finally {
-//		      service.deleteDocument(newDocument);
-		    }
-		    
-		    System.out.println(newDocument.getUserFields());
-		    
+//	    	String smallFilePath = "input/GetHip/chunks/audio_small.ogg";
+//	    	System.out.println(smallFilePath);
+//	    	
+//		    speechResults = speechToTextService.recognize(new File(smallFilePath), options);
+//
+//		    newDocument = new Document(corpus, "GetHip_small");
+//		    newDocument.setLabel("GetHip_small");
+//
+//		    Map<String, String> userFields = new HashMap<String, String>();
+//		    userFields.put("link", "http://test.link.com");
+//		    newDocument.setUserFields(userFields);
+//		    
+//		    for (int i = 0; i < speechResults.getResults().size(); i++)
+//		    {
+//			    Transcript transcript = speechResults.getResults().get(i);
+//			    
+//			    String transcriptOutput = transcript.getAlternatives().get(0).getTranscript();
+////			    System.out.println(transcriptOutput);
+//			    
+//			    newDocument.addParts(new Part("part_" + i, transcriptOutput, HttpMediaType.TEXT_PLAIN));
+//		    	
+//		    }
+//		    
+//		    try {
+//		      service.createDocument(newDocument);
+//		      newDocument = service.getDocument(newDocument);
+//		      newDocument.setTimeToLive(3600);
+//		      service.updateDocument(newDocument);
+//		    } finally {
+////		      service.deleteDocument(newDocument);
+//		    }
+//		    
 		    final Map<String, Object> params = new HashMap<String, Object>();
 		    params.put(ConceptInsights.CURSOR, 0);
 		    params.put(ConceptInsights.LIMIT, 20);
@@ -189,25 +190,21 @@ public class TestCorpora {
 		    
 		    System.out.println(documents);
 		    
-		    for (String keyword : new String[]{"robot", "concept", "cloud", })
-		    {
-			    Map <String, Object> searchGraphConceptByLabelParams = new HashMap<String, Object>();
-			    searchGraphConceptByLabelParams.put("query", "robot");
-			    searchGraphConceptByLabelParams.put("prefix", true);
-			    searchGraphConceptByLabelParams.put("limit", 10);
+		    Map <String, Object> searchGraphConceptByLabelParams = new HashMap<String, Object>();
+		    searchGraphConceptByLabelParams.put("query", "Matt");
+		    searchGraphConceptByLabelParams.put("prefix", true);
+		    searchGraphConceptByLabelParams.put("limit", 10);
 
-			    RequestedFields concept_fields = new RequestedFields();
-//			    concept_fields.include("link");
-			    concept_fields.include("\"abstract\":1");
-			    concept_fields.include("\"userFields\":1");
+		    RequestedFields concept_fields = new RequestedFields();
+		    concept_fields.include("link");
+		    concept_fields.include("\"abstract\":1");
+		    concept_fields.include("\"userFields\":1");
 
-			    searchGraphConceptByLabelParams.put("concept_fields", concept_fields);
+		    searchGraphConceptByLabelParams.put("concept_fields", concept_fields);
 
-			    Matches matches = service.searchGraphsConceptByLabel(Graph.WIKIPEDIA, searchGraphConceptByLabelParams);
-			    System.out.println(matches);
+		    Matches matches = service.searchGraphsConceptByLabel(Graph.WIKIPEDIA, searchGraphConceptByLabelParams);
+		    System.out.println(matches);
 		    	
-		    }
-		    
 //		    Map<String, Object> parameters = new HashMap<String, Object>();
 //		    parameters.put("ids", Arrays.asList(new String[]{"/corpora/eve6tionsto1/devoxx_corpus1/documents/writing_groovy_ATS", "/corpora/eve6tionsto1/devoxx_corpus1/documents/InterviewWithPepperRobot", }));
 //		    
