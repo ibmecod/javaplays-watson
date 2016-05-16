@@ -1,26 +1,27 @@
 package com.ibm.ecod.watson;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.ibm.watson.developer_cloud.concept_insights.v2.ConceptInsights;
 import com.ibm.watson.developer_cloud.concept_insights.v2.model.AccountPermission;
 import com.ibm.watson.developer_cloud.concept_insights.v2.model.AccountPermission.Permission;
+import com.ibm.watson.developer_cloud.concept_insights.v2.model.Concept;
+import com.ibm.watson.developer_cloud.concept_insights.v2.model.ConceptMetadata;
 import com.ibm.watson.developer_cloud.concept_insights.v2.model.Corpus;
 import com.ibm.watson.developer_cloud.concept_insights.v2.model.Document;
 import com.ibm.watson.developer_cloud.concept_insights.v2.model.Documents;
 import com.ibm.watson.developer_cloud.concept_insights.v2.model.Graph;
 import com.ibm.watson.developer_cloud.concept_insights.v2.model.Matches;
-import com.ibm.watson.developer_cloud.concept_insights.v2.model.Part;
+import com.ibm.watson.developer_cloud.concept_insights.v2.model.QueryConcepts;
 import com.ibm.watson.developer_cloud.concept_insights.v2.model.RequestedFields;
-import com.ibm.watson.developer_cloud.http.HttpMediaType;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.RecognizeOptions;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.SpeechToText;
 import com.ibm.watson.developer_cloud.speech_to_text.v1.model.SpeechResults;
-import com.ibm.watson.developer_cloud.speech_to_text.v1.model.Transcript;
 
 public class TestCorpora {
 
@@ -193,39 +194,46 @@ public class TestCorpora {
 		    
 		    System.out.println(documents);
 		    
-//		    Map <String, Object> searchGraphConceptByLabelParams = new HashMap<String, Object>();
-//		    searchGraphConceptByLabelParams.put("query", "Matt");
-//		    searchGraphConceptByLabelParams.put("prefix", true);
-//		    searchGraphConceptByLabelParams.put("limit", 10);
-//
-//		    RequestedFields concept_fields = new RequestedFields();
-//		    concept_fields.include("link");
-//		    concept_fields.include("\"abstract\":1");
-//		    concept_fields.include("\"userFields\":1");
-//
-//		    searchGraphConceptByLabelParams.put("concept_fields", concept_fields);
-//
-//		    Matches matches = service.searchGraphsConceptByLabel(Graph.WIKIPEDIA, searchGraphConceptByLabelParams);
-//		    System.out.println(matches);
-		    	
-		    Map <String, Object> searchCorpusByLabelParams = new HashMap<String, Object>();
-		    searchCorpusByLabelParams.put(ConceptInsights.QUERY, "java");
-		    searchCorpusByLabelParams.put(ConceptInsights.PREFIX, true);
-		    
-		    Matches matches = service.searchCorpusByLabel(corpus, searchCorpusByLabelParams);
-		    System.out.println(matches);
+		    Map <String, Object> searchGraphConceptByLabelParams = new HashMap<String, Object>();
+		    searchGraphConceptByLabelParams.put("query", "java");
+		    searchGraphConceptByLabelParams.put("prefix", true);
+		    searchGraphConceptByLabelParams.put("limit", 10);
 
-//		    Map<String, Object> parameters = new HashMap<String, Object>();
-//		    parameters.put("ids", Arrays.asList(new String[]{"/corpora/eve6tionsto1/devoxx_corpus1/documents/writing_groovy_ATS", "/corpora/eve6tionsto1/devoxx_corpus1/documents/InterviewWithPepperRobot", }));
+		    RequestedFields concept_fields = new RequestedFields();
+		    concept_fields.include("link");
+		    concept_fields.include("\"abstract\":1");
+		    concept_fields.include("\"userFields\":1");
+
+		    searchGraphConceptByLabelParams.put("concept_fields", concept_fields);
+
+		    Matches matches = service.searchGraphsConceptByLabel(Graph.WIKIPEDIA, searchGraphConceptByLabelParams);
+		    System.out.println(matches);
+		    
+		    // gather matches from label search
+		    
+		    List<String> ids = new ArrayList<>();
+		    
+		    for (Concept concept : matches.getMatches())
+		    {
+		    	ids.add(concept.getId());
+		    	
+		    }
+		    
+		    // do a concept search with collected ids
+		    	
+//		    Map <String, Object> searchCorpusByLabelParams = new HashMap<String, Object>();
+//		    searchCorpusByLabelParams.put(ConceptInsights.QUERY, "java");
+//		    searchCorpusByLabelParams.put(ConceptInsights.PREFIX, true);
 //		    
-//		    QueryConcepts queryConcepts = service.conceptualSearch(corpus, parameters);
-//		    
-//		    System.out.println(queryConcepts.toString());
-//		    
-//		    Concept concept = new Concept(account, "/graphs/wikipedia/en-20120601", "Code");
-//		    ConceptMetadata conceptMetadata = service.getConcept(concept);
-//		    
-//		    System.out.println(conceptMetadata.toString());
+//		    Matches matches = service.searchCorpusByLabel(corpus, searchCorpusByLabelParams);
+//		    System.out.println(matches);
+
+		    Map<String, Object> parameters = new HashMap<String, Object>();
+		    parameters.put("ids", ids);
+		    
+		    QueryConcepts queryConcepts = service.conceptualSearch(corpus, parameters);
+		    
+		    System.out.println(queryConcepts.toString());
 		    
 		  }
 
