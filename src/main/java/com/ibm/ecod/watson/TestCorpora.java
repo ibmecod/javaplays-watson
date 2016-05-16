@@ -117,38 +117,41 @@ public class TestCorpora {
 ////		      service.deleteDocument(newDocument);
 //		    }
 
-		    for (int chunkIndex = 0; chunkIndex <= 10; chunkIndex++)
-		    {
-		    	String chunkFilePath = String.format("input/audio_chunks/out%03d.ogg", chunkIndex);
-		    	System.out.println(chunkFilePath);
-		    	
-			    speechResults = speechToTextService.recognize(new File(chunkFilePath), options);
-
-			    newDocument = new Document(corpus, String.format("InterviewWithPepperRobot%03d", chunkIndex));
-			    newDocument.setLabel(String.format("InterviewWithPepperRobot%03d", chunkIndex));
-
-			    Map<String, String> userFields = new HashMap<String, String>();
-			    userFields.put("link", "http://test.link.com");
-			    newDocument.setUserFields(userFields);
-			    
-			    for (int i = 0; i < speechResults.getResults().size(); i++)
-			    {
-				    Transcript transcript = speechResults.getResults().get(i);
-				    	
-				    newDocument.addParts(new Part("part_" + i, transcript.getAlternatives().get(0).getTranscript(), HttpMediaType.TEXT_PLAIN));
-			    	
-			    }
-			    
-			    try {
-			      service.createDocument(newDocument);
-			      newDocument = service.getDocument(newDocument);
-			      newDocument.setTimeToLive(3600);
-			      service.updateDocument(newDocument);
-			    } finally {
-//			      service.deleteDocument(newDocument);
-			    }
-		    	
-		    }
+//		    for (int chunkIndex = 0; chunkIndex <= 10; chunkIndex++)
+//		    {
+//		    	String chunkFilePath = String.format("input/audio_chunks/out%03d.ogg", chunkIndex);
+//		    	System.out.println(chunkFilePath);
+//		    	
+//			    speechResults = speechToTextService.recognize(new File(chunkFilePath), options);
+//
+//			    newDocument = new Document(corpus, String.format("InterviewWithPepperRobot%03d", chunkIndex));
+//			    newDocument.setLabel(String.format("InterviewWithPepperRobot%03d", chunkIndex));
+//
+//			    Map<String, String> userFields = new HashMap<String, String>();
+//			    userFields.put("link", "http://test.link.com");
+//			    newDocument.setUserFields(userFields);
+//			    
+//			    StringBuilder stringBuilder = new StringBuilder();
+//			    for (int i = 0; i < speechResults.getResults().size(); i++)
+//			    {
+//				    Transcript transcript = speechResults.getResults().get(i);
+//				    
+//				    stringBuilder.append(transcript.getAlternatives().get(0).getTranscript());
+//				    
+//			    }
+//			    
+//			    newDocument.addParts(new Part("part_", stringBuilder.toString(), HttpMediaType.TEXT_PLAIN));
+//			    
+//			    try {
+//			      service.createDocument(newDocument);
+//			      newDocument = service.getDocument(newDocument);
+//			      newDocument.setTimeToLive(3600);
+//			      service.updateDocument(newDocument);
+//			    } finally {
+////			      service.deleteDocument(newDocument);
+//			    }
+//		    	
+//		    }
 		    
 //	    	String smallFilePath = "input/GetHip/chunks/audio_small.ogg";
 //	    	System.out.println(smallFilePath);
@@ -162,17 +165,17 @@ public class TestCorpora {
 //		    userFields.put("link", "http://test.link.com");
 //		    newDocument.setUserFields(userFields);
 //		    
+//		    StringBuilder stringBuilder = new StringBuilder();
 //		    for (int i = 0; i < speechResults.getResults().size(); i++)
 //		    {
 //			    Transcript transcript = speechResults.getResults().get(i);
 //			    
-//			    String transcriptOutput = transcript.getAlternatives().get(0).getTranscript();
-////			    System.out.println(transcriptOutput);
+//			    stringBuilder.append(transcript.getAlternatives().get(0).getTranscript());
 //			    
-//			    newDocument.addParts(new Part("part_" + i, transcriptOutput, HttpMediaType.TEXT_PLAIN));
-//		    	
 //		    }
 //		    
+//		    newDocument.addParts(new Part("part_", stringBuilder.toString(), HttpMediaType.TEXT_PLAIN));
+		    
 //		    try {
 //		      service.createDocument(newDocument);
 //		      newDocument = service.getDocument(newDocument);
@@ -190,21 +193,28 @@ public class TestCorpora {
 		    
 		    System.out.println(documents);
 		    
-		    Map <String, Object> searchGraphConceptByLabelParams = new HashMap<String, Object>();
-		    searchGraphConceptByLabelParams.put("query", "Matt");
-		    searchGraphConceptByLabelParams.put("prefix", true);
-		    searchGraphConceptByLabelParams.put("limit", 10);
-
-		    RequestedFields concept_fields = new RequestedFields();
-		    concept_fields.include("link");
-		    concept_fields.include("\"abstract\":1");
-		    concept_fields.include("\"userFields\":1");
-
-		    searchGraphConceptByLabelParams.put("concept_fields", concept_fields);
-
-		    Matches matches = service.searchGraphsConceptByLabel(Graph.WIKIPEDIA, searchGraphConceptByLabelParams);
-		    System.out.println(matches);
+//		    Map <String, Object> searchGraphConceptByLabelParams = new HashMap<String, Object>();
+//		    searchGraphConceptByLabelParams.put("query", "Matt");
+//		    searchGraphConceptByLabelParams.put("prefix", true);
+//		    searchGraphConceptByLabelParams.put("limit", 10);
+//
+//		    RequestedFields concept_fields = new RequestedFields();
+//		    concept_fields.include("link");
+//		    concept_fields.include("\"abstract\":1");
+//		    concept_fields.include("\"userFields\":1");
+//
+//		    searchGraphConceptByLabelParams.put("concept_fields", concept_fields);
+//
+//		    Matches matches = service.searchGraphsConceptByLabel(Graph.WIKIPEDIA, searchGraphConceptByLabelParams);
+//		    System.out.println(matches);
 		    	
+		    Map <String, Object> searchCorpusByLabelParams = new HashMap<String, Object>();
+		    searchCorpusByLabelParams.put(ConceptInsights.QUERY, "java");
+		    searchCorpusByLabelParams.put(ConceptInsights.PREFIX, true);
+		    
+		    Matches matches = service.searchCorpusByLabel(corpus, searchCorpusByLabelParams);
+		    System.out.println(matches);
+
 //		    Map<String, Object> parameters = new HashMap<String, Object>();
 //		    parameters.put("ids", Arrays.asList(new String[]{"/corpora/eve6tionsto1/devoxx_corpus1/documents/writing_groovy_ATS", "/corpora/eve6tionsto1/devoxx_corpus1/documents/InterviewWithPepperRobot", }));
 //		    
